@@ -26,4 +26,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Fade-in animation for sections
+    const sections = document.querySelectorAll('section');
+    
+    // Add initial hidden class to all sections except hero
+    sections.forEach(section => {
+        if (section.id !== 'hero') {
+            section.classList.add('fade-in-section', 'not-visible');
+        }
+    });
+    
+    // Function to check if section is in viewport
+    function checkSections() {
+        sections.forEach(section => {
+            if (section.id !== 'hero') { // Don't animate the hero section
+                const sectionTop = section.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight * 0.75; // Trigger when section is 75% in view
+                
+                if (sectionTop < triggerPoint) {
+                    section.classList.remove('not-visible');
+                    section.classList.add('visible');
+                }
+            }
+        });
+    }
+    
+    // Check sections on load
+    checkSections();
+    
+    // Check sections on scroll
+    window.addEventListener('scroll', checkSections);
 }); 

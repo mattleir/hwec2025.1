@@ -11,6 +11,23 @@
     --highlight: #f4ff22;
 }
 
+/* Section Fade-In Animation */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-section.not-visible {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -434,7 +451,6 @@ nav ul li a.btn-primary {
 .strand-icon {
     width: 60px;
     height: 60px;
-    background: #2A365E;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -442,9 +458,10 @@ nav ul li a.btn-primary {
     margin-bottom: 20px;
 }
 
-.strand-icon i {
-    font-size: 24px;
-    color: white;
+.strand-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
 }
 
 .strand-card h3 {
@@ -606,9 +623,14 @@ nav ul li a.btn-primary {
 }
 
 .rsvp-qr img {
-    margin: 1rem 0;
-    border: 5px solid white;
-    border-radius: 8px;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding: 8px;
 }
 
 .rsvp-qr p {
